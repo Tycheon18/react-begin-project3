@@ -4,7 +4,7 @@ import Header from "../component/header";
 import Editor from "../component/Editor";
 import { useState, useContext, useEffect } from "react";
 import { DiaryStateContext } from "../App";
-import { getMonthRangeByDate } from "../util";
+import { getMonthRangeByDate, setPageTitle } from "../util";
 import DiaryList from "../component/DiaryList";
 
 const Home = () => {
@@ -13,6 +13,10 @@ const Home = () => {
     const [filteredData, setFilteredData] = useState([]);
     const headerTitle = `${pivotDate.getFullYear()}년 ${
                             pivotDate.getMonth() + 1}월`;
+
+    useEffect(() => {
+        setPageTitle("Tycheon18의 감정 일기장");
+    }, []);
 
     useEffect(() => {
         if (data.length >= 1) {

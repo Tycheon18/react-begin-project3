@@ -3,12 +3,17 @@ import Header from "../component/header";
 import Button from "../component/Button";
 import Editor from "../component/Editor";
 import { DiaryDispatchContext } from "../App";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
+import { setPageTitle } from "../util";
 
 
 const New = () => {
     const { onCreate } = useContext(DiaryDispatchContext);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        setPageTitle("새 일기 쓰기");
+    }, []);
 
     const onSubmit = (data) => {
         const { date, content, emotionId } = data;
